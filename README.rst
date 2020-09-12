@@ -8,7 +8,7 @@ MySQL Backed Locking Primitive
 .. image:: https://img.shields.io/pypi/v/py-mysql-lock.svg
         :target: https://pypi.python.org/pypi/py-mysql-lock
 
-.. image:: https://img.shields.io/travis/sanketplus/py-mysql-lock
+.. image:: https://api.travis-ci.com/sanketplus/py-mysql-lock.svg
         :target: https://travis-ci.com/sanketplus/py-mysql-lock
 
 .. image:: https://codecov.io/github/sanketplus/py-mysql-lock/coverage.svg?branch=master&precision=2

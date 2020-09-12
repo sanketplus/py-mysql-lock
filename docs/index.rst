@@ -6,7 +6,7 @@ Welcome to py-mysql-lock's documentation!
    :caption: Contents:
 
    installation
-   modules
+   API Reference <modules>
    contributing
    history
 
