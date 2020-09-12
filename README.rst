@@ -12,7 +12,7 @@ MySQL Backed Locking Primitive
         :target: https://travis-ci.com/sanketplus/PyMySQLLock
 
 .. image:: https://readthedocs.org/projects/PyMySQLLock/badge/?version=latest
-        :target: https://PyMySQLLock.readthedocs.io/en/latest/?badge=latest
+        :target: https://Py-MySQL-Lock.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
 
@@ -27,7 +27,7 @@ Though there are mature locking primitives provided by systems like Zookeeper an
 
 
 * Free software: MIT license
-* Documentation: https://PyMySQLLock.readthedocs.io.
+* Documentation: https://py-mysql-lock.readthedocs.io.
 
 
 Features
@@ -41,7 +41,6 @@ TODO
 * Expand readme with examples and features
     * learn RST :/
 * Populate and tidy up docs
-* add docstrings in code
 * readthedocs URL badge and setup
 * Setting UP CI with Travis
 * Increase code coverage and add its badge

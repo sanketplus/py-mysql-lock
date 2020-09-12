@@ -1,19 +1,13 @@
 Welcome to py-mysql-lock's documentation!
-======================================
+=========================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
 
-   readme
    installation
-   usage
    modules
    contributing
    history
 
-Indices and tables
-==================
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. include:: ../README.rst
