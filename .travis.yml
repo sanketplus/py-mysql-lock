@@ -26,7 +26,7 @@ deploy:
   distributions: sdist bdist_wheel
   user: sanketplus
   password:
-    secure: PLEASE_REPLACE_ME
+    secure: mHZg+umruYElg226sDcaig2DbJYaB3uTjEsOcc+eQ5TqvC9f6vpjjKORs6Wpb1DkiQH/iBHh3qqdG3DABEmMiehKG2zKtrEFkZFyFyM+GXG/yYtPJRZFtYglgGtqRaQ3S9IRfVoxGxaIoirmBL59ThJR42y7DV51db8MShu8/er9NRtY+yzTBWrA/V+6c2DvbakqPHyPO/jH9/Ugg1n8JIm8y60JK+0CwWS2lo8Knx72wnoDBEr1k8cM2b5dOZn0FA3FNkGxOQt2RpMWhlcUXDPhGZzzMrEjAlCzuOlfTV3jW0ykQoc88pePRQ9W7RrLt6SNFgE/74pi4DDXQUCHaCaDmqsuu8zJA/QzDVxsGQpbZ8dMCgu1josqeacHGwA5HfLbS/mcD8VY9RhTqLmEsXWKNawtpaWxNKs3kzKKfC3RWTkabubYXCLmJh8Ig00/F5a9dYAXYxQYq9T4t8bcZ/EhMAtxo/F/LBGqEP7qzG/NgZEcXuoveZJcn9LLADWriNpEuHQPU9XWaSu8Lped9tcNn20nVtBR0YJtZws6NHFFBKaANyEygqbl7GJF3N0+xateWNgDxY1K5N2uHA0HsjVM5ffy7bsjdtX/Lc6RgzhhSdcyuWHaTEfWLkfi7oZgqpp+daePa1oaCADlytP3yuY945WFO4B01YgZdLChqI0=
   on:
     tags: true
     repo: sanketplus/py-mysql-lock
