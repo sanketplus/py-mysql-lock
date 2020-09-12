@@ -35,7 +35,6 @@ TODO
 * Expand readme with examples and features
     * learn RST :/
 * Populate and tidy up docs
-* readthedocs URL badge and setup
 * Setting UP CI with Travis
 * Increase code coverage and add its badge
 * pypi publish

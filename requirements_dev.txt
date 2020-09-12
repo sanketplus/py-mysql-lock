@@ -12,3 +12,5 @@ pytest==4.6.5
 pytest-runner==5.1
 
 PyMySQL
+mysqlclient
+mysql-connector-python

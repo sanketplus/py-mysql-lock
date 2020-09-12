@@ -1,3 +1,12 @@
+import importlib
+
+
+SUPPORTED_MYSQL_PYTHON_LIBS = [
+    "pymysql",
+    "mysql.connector",
+    "MySQLdb"
+]
+
 
 class ConnectionFactory:
     """
@@ -12,20 +21,30 @@ class ConnectionFactory:
         self.args = args
         self.kwargs = kwargs
 
-        # TODO: support more mysql libs
-        try:
-            from pymysql import connect
-        except ImportError:
-            raise Exception("No mysql connector found.")
+        # optionally a connect function can be passed, this is useful for testing and for using a custom connect
+        # function other than ones given by supported libraries
+        if "mysql_lib_connector" in kwargs:
+            self.connector = kwargs["mysql_lib_connector"]
+            del kwargs["mysql_lib_connector"]
+        else:
+            for module in SUPPORTED_MYSQL_PYTHON_LIBS:
+                try:
+                    loaded_module = importlib.import_module(module)
+                    self.connector = loaded_module.connect
+                except ModuleNotFoundError:
+                    continue
+                else:
+                    break
+            else:
+                raise Exception("No mysql connector found. Install one of these: PyMySQL, mysql-connector-python, " +
+                                "mysqlclient")
 
         # testing the given parameters
-        # TODO: add this later
         try:
-            test_conn = connect(*self.args, **self.kwargs)
+            test_conn = self.connector(*self.args, **self.kwargs)
             test_conn.ping()
         except Exception as e:
-            raise Exception(f"Could not connect to db with given parameters using module {connect.__module__}: {e}")
-        self.connector = connect
+            raise Exception(f"Could not connect to db with given parameters using module {self.connector.__module__}: {e}")
 
     def new(self):
         """
