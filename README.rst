@@ -1,19 +1,20 @@
 =============
 py-mysql-lock
 =============
+
 ------------------------------
 MySQL Backed Locking Primitive
 ------------------------------
 
-.. image:: https://img.shields.io/pypi/v/py-mysql-lock.svg
-        :target: https://pypi.python.org/pypi/py-mysql-lock
+.. image:: https://img.shields.io/pypi/v/PyMySQLLock.svg
+        :target: https://pypi.python.org/pypi/PyMySQLLock
 
 .. image:: https://api.travis-ci.com/sanketplus/py-mysql-lock.svg
         :target: https://travis-ci.com/sanketplus/py-mysql-lock
 
 .. image:: https://codecov.io/github/sanketplus/py-mysql-lock/coverage.svg?branch=master&precision=2
-    :target: https://codecov.io/gh/sanketplus/py-mysql-lock
-    :alt: Coverage!
+        :target: https://codecov.io/gh/sanketplus/py-mysql-lock
+        :alt: Coverage!
 
 .. image:: https://readthedocs.org/projects/py-mysql-lock/badge/?version=latest
         :target: https://Py-MySQL-Lock.readthedocs.io/en/latest/?badge=latest
@@ -43,10 +44,12 @@ py-mysql-lock can be installed from pip. Alternate installation methods can be f
 -----
 Usage
 -----
+
 py-mysql-lock works with existing python mysql libraries like PyMYSQL, mysql-connector-python amd mysqlclient.
 
 Getting A Named Lock
 --------------------
+
 Getting a named lock is a three step process. First you will create a ``Locker`` instance. Argument to locker are the
 same arguments that you give to your MySQL library's ``connect`` method. Locker then can be used to create Locks. Locks
 can be acquired and released.
@@ -66,15 +69,18 @@ can be acquired and released.
 
 Timeout For Acquisition
 -----------------------
+
 Call to a lock's `acquire` method takes an optional `timeout` arguments. The value is timeout
 in seconds. Default value is -1 which denotes wait for indefinite time.
 ::
+
     # wait for 10 seconds. If lock is not acquired, False is returned
     lock.acquire(timeout=10)
 
-
+====
 TODO
 ====
+
 * complete TODOs in code
 * Expand readme with examples and features
 * pypi publish
