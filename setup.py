@@ -14,7 +14,7 @@ requirements = [ ]
 
 setup_requirements = ['pytest-runner', ]
 
-test_requirements = ['pytest>=3', "PyMySQL", "mysqlclient", "mysql-connector-python"]
+test_requirements = ['pytest>=3', "PyMySQL", "mysqlclient", "mysql-connector-python", "pytest-cov"]
 
 setup(
     author="Sanket Patel",
