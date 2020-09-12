@@ -32,10 +32,22 @@ Features
 
 * TODO
 
-Credits
--------
+TODO
+====
+* complete TODOs in code
+* Expand readme with examples and features
+    * learn RST :/
+* Populate and tidy up docs
+* add docstrings in code
+* readthedocs URL badge and setup
+* Setting UP CI with Travis
+* Increase code coverage and add its badge
+* pypi publish
+* video demo
+* mark this project ready for review
 
-This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
+
+**Credits:** This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
 
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
 .. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
