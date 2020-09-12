@@ -2,8 +2,20 @@ from PyMySQLLock import Locker
 
 
 def test_get_lock_success(mysql_conn_params):
+    # TODO: test with multiple mysql libs when support is added
     locker = Locker(**mysql_conn_params)
     l = locker.lock("test")
-    l.acquire()
-    # TODO: verify lock actually obtained
+    ret = l.acquire()
+    assert ret
+
+    # verify if lock is obtained by trying to acquire again with same name
+    l1 = locker.lock("test")
+    ret1 = l1.acquire(1)
+    assert not ret1
+
+    # release the lock now
     l.release()
+
+    # try again to acquire
+    ret1 = l1.acquire(1)
+    assert ret1
