@@ -1,7 +1,9 @@
 =============
 py-mysql-lock
 =============
-
+------------------------------
+MySQL Backed Locking Primitive
+------------------------------
 
 .. image:: https://img.shields.io/pypi/v/PyMySQLLock.svg
         :target: https://pypi.python.org/pypi/PyMySQLLock
@@ -19,8 +21,9 @@ py-mysql-lock
      :alt: Updates
 
 
+py-mysql-lock provides locking primitive based on MySQL's GET_LOCK
 
-MySQL Backed Locking Primitive
+Though there are mature locking primitives provided by systems like Zookeeper and etcd, when you have an application which is primarily dependent on MySQL for its uptime and health, added resiliency provided by systems just mentioned doesn't add much benefit. py-mysql-lock helps when you have multiple application instances which are backed by a common mysql instance and you want only one of those application instances to hold a lock and do certain tasks.
 
 
 * Free software: MIT license
