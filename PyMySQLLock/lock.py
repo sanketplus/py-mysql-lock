@@ -1,3 +1,5 @@
+import threading
+
 
 class Lock:
     """
@@ -14,16 +16,18 @@ class Lock:
         self.name = name
         self.acquired = False
         self.conn = None
+        self.release_event = threading.Event()
 
-    def acquire(self, timeout=-1):
+    def acquire(self, timeout=-1, refresh_interval_secs=10):
         """
         Try to obtain lock with the set name.
 
         :param timeout: Timeout for getting the lock in seconds. Defaults to -1 which will wait for indefinite time.
+        :param refresh_interval_secs: Interval at which a thread will keep pinging on mysql connection that's holding
+                                      the lock.
         :return: The return value is True if the lock is acquired successfully, False if not (for example if the
         timeout expired).
         """
-        # TODO: refresh conn after lock is acquired
         self.conn = self.locker.connection_factory.new()
         with self.conn.cursor() as cursor:
             cursor.execute("SELECT GET_LOCK(%s, %s)", (self.name, str(timeout)))
@@ -31,6 +35,9 @@ class Lock:
             ret_value = rows[0][0]
             if isinstance(ret_value, int) and ret_value == 1:
                 self.acquired = True
+                # clear the release event since this is freshly acquired
+                self.release_event.clear()
+                threading.Thread(target=self.refresh, args=(refresh_interval_secs,)).start()
                 return True
         return False
 
@@ -40,12 +47,20 @@ class Lock:
 
         :return: No return value.
         """
+        self.release_event.set()  # set this as released, so that the refresh thread exit.
         with self.conn.cursor() as cursor:
             cursor.execute("DO RELEASE_LOCK(%s)", (self.name,))
         # this anyway releases the lock
         self.conn.close()
         self.conn = None
         self.acquired = False
+
+    def refresh(self, interval_seconds):
+        while not self.release_event.isSet():
+            # this returns true if release has been set while waiting
+            if self.release_event.wait(interval_seconds):
+                break
+            self.conn.ping()
 
     def locked(self):
         """

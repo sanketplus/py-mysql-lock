@@ -6,7 +6,7 @@ def test_get_lock_success(mysql_conn_params, mysql_connectors):
         mysql_conn_params["mysql_lib_connector"] = connector
         locker = Locker(**mysql_conn_params)
         l = locker.lock("test")
-        ret = l.acquire()
+        ret = l.acquire(refresh_interval_secs=1)
         assert ret
         assert l.locked()
 

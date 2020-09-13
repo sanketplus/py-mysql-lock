@@ -70,21 +70,29 @@ can be acquired and released.
 Timeout For Acquisition
 -----------------------
 
-Call to a lock's `acquire` method takes an optional `timeout` arguments. The value is timeout
+Call to a lock's ``acquire`` method takes an optional ``timeout`` arguments. The value is timeout
 in seconds. Default value is -1 which denotes wait for indefinite time.
 ::
 
     # wait for 10 seconds. If lock is not acquired, False is returned
     lock.acquire(timeout=10)
 
+Refresh Interval
+-----------------------
+
+Since the lock is acquired on a mysql connection, it is important for the connection to stay alive. To prevent connection
+from breaking due to inactivity, py-mysql-lock keeps pinging on the connection in background. The default ping interval
+is 10 seconds and optionally can be set with ``acquire`` call,
+::
+
+    lock.acquire(timeout=10, refresh_interval_secs=1)
+
+
 ====
 TODO
 ====
 
 * complete TODOs in code
-* Expand readme with examples and features
-* pypi publish
-* refresh lock
 * metadata api to get all locks in use
 * context manager
 * video demo
