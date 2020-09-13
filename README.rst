@@ -87,16 +87,14 @@ is 10 seconds and optionally can be set with ``acquire`` call,
 
     lock.acquire(timeout=10, refresh_interval_secs=1)
 
+Get All Locks
+-----------------------
 
-====
-TODO
-====
+You can also query the mysql database for getting all current acquired locks on the given db.
+::
 
-* complete TODOs in code
-* metadata api to get all locks in use
-* context manager
-* video demo
-* mark this project ready for review
+    locker.get_all_locks()  # returns list of names (string) of locks acquired on the db
+
 
 
 **Credits:** This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.

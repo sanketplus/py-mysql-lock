@@ -25,3 +25,16 @@ class Locker:
         :return: A Lock object.
         """
         return self.lock_class(self, name)
+
+    def get_all_locks(self):
+        """
+        Get all locks queries mysql metadata table to get all user acquired locks.
+
+        :return: list of locks acquired on the given mysql database
+        """
+        conn = self.connection_factory.new()
+        with conn.cursor() as cursor:
+            cursor.execute("select object_name from performance_schema.metadata_locks "
+                           "where object_type = 'USER LEVEL LOCK'")
+            rows = cursor.fetchall()
+            return [i[0] for i in rows]

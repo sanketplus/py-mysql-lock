@@ -10,6 +10,9 @@ def test_get_lock_success(mysql_conn_params, mysql_connectors):
         assert ret
         assert l.locked()
 
+        # verify the lock returns in get_locks
+        assert "test" in locker.get_all_locks()
+
         # verify if lock is obtained by trying to acquire again with same name
         l1 = locker.lock("test")
         ret1 = l1.acquire(timeout=1)
