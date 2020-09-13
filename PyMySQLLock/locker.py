@@ -30,6 +30,11 @@ class Locker:
         """
         Get all locks queries mysql metadata table to get all user acquired locks.
 
+        For mysql 5.7 and older, instrumentations needs to be enabled in order for this API to work. Read more at:
+        https://dev.mysql.com/doc/refman/5.7/en/performance-schema-metadata-locks-table.html
+
+        For mysql 8, this API will work on default setup of mysql.
+
         :return: list of locks acquired on the given mysql database
         """
         conn = self.connection_factory.new()

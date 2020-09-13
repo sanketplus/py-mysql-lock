@@ -12,6 +12,12 @@ services:
 # Command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 install: pip install -U tox-travis
 
+before_script:
+  - echo "UPDATE performance_schema.setup_instruments SET ENABLED = 'YES', TIMED = 'YES' WHERE NAME = 'wait/lock/metadata/sql/mdl';" > /tmp/enable.sql
+  - mysql -uroot < /tmp/enable.sql
+
+
+
 # Command to run tests, e.g. python setup.py test
 script:
   - tox
